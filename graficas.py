@@ -39,7 +39,7 @@ def solucionB(humanos, infectados, zombies, muertos, a, b, z, r):
   plt.plot(tiempo,sol.T[1], c='purple', label="Infectados")
   plt.plot(tiempo,sol.T[3], c='r', label="Muertos")
   lim = np.amax(sol)
-  plt.title(a"Modelo con infeccion latente", fontweight='bold')
+  plt.title("Modelo con infeccion latente", fontweight='bold')
   plt.xlabel("Tiempo (semanas)")
   plt.legend()
   plt.ylim(0,lim+10)
