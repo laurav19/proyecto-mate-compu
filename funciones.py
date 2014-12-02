@@ -36,6 +36,7 @@ def plotMosaico(img, titulos, alt, anch, nFilas, nColumnas, random):
         plt.title(titulos[i], size=12)
     plt.xticks(())
     plt.yticks(())
+    plt.show()
 
 def muestraImagen(img, alt, anch, titulo):
   """
@@ -45,6 +46,7 @@ def muestraImagen(img, alt, anch, titulo):
   plt.title(titulo)
   plt.xticks(())
   plt.yticks(())
+  plt.show()
 
 def matrizAleatoria(m, n, imagenes1D):
   """
