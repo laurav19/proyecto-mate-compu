@@ -1,3 +1,6 @@
+from IPython.html.widgets import interact, fixed
+from IPython.html import widgets
+from IPython.display import display
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
