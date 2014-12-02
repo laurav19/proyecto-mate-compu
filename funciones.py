@@ -191,6 +191,40 @@ def porAciertoIndividual2(clave, parametro, conjunto):
         resp = 100.0*aci/(entrenamientos[clave].shape[0] - desc)
   return resp
 
+suma = 0
+nFotos = 0
+print "RESULTADOS SEGUNDO MÉTODO\n"
+print "\nEntrenamiento = " + str(nEntrenamiento)
+print "Eigenvectores = " + str(no_eigC)
+
+print "\nConjunto de prueba\n"
+print "Clave\tCant. prueba\tPorcentaje acierto"
+for i in range (0, nPersonas):
+    pruebai = cuantasFotos(i) - nEntrenamiento
+    aciertoi = porAciertoIndividual2(i, parametro1, "prueba")
+    #suma = suma + aciertoi*pruebai
+    #nFotos = nFotos + pruebai
+    if aciertoi != -1:
+        print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+    else:
+        print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
+#suma = suma/nFotos
+
+print "\nConjunto de entrenamiento\n"
+print "Clave\tCant. prueba\tPorcentaje acierto"
+for i in range (0, nPersonas):
+    pruebai =  nEntrenamiento
+    aciertoi = porAciertoIndividual2(i, parametro2, "entrenamiento")
+    #suma = suma + aciertoi*pruebai
+    #nFotos = nFotos + pruebai
+    if aciertoi != -1:
+        print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+    else:
+        print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
+#suma = suma/nFotos
+
+#print "\nTotal = " + str(suma) + "%"
+
 def imagenInternet(url):
   """
   Regresa un arreglo con una imagen que se puede obtener de una direccion url. Le asigna un formato en blanco y negro de 8 bits
@@ -201,3 +235,13 @@ def imagenInternet(url):
   img = array(img)
   return img
 
+def muestraPrediccion(imagen, nombre, prediccion):
+    fig, ax = plt.subplots(1,2, figsize=(5,17))
+    plt.gray()
+    ax[0].imshow(imagen)
+    ax[0].set_title(nombre)
+    ax[0].set_axis_off()
+
+    ax[1].imshow(entrenamientos[prediccion][0])
+    ax[1].set_title(nombres[prediccion])
+    ax[1].set_axis_off()
