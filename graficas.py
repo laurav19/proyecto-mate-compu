@@ -2,6 +2,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
+def derivadasA(estado, t, a, b, z):
+  dh = -b*estado[0]*estado[1]
+  dz = b*estado[0]*estado[1] + z*estado[2] - a*estado[0]*estado[1]
+  dm = a*estado[0]*estado[1] - z*estado[2]
+  return np.array([dh, dz, dm])
+
 def graficaSolucionA(humanos, zombies, muertos, a, b, z):
   tiempo = np.linspace(0, 1, 100)
   estadoA = np.array([humanos, zombies,muertos])
