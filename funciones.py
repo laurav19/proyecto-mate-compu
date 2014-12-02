@@ -110,7 +110,7 @@ def norma(vec):
   norma = ((v**2).sum())**0.5
   return norma
 
-def porAciertoIndividual(clave, conjunto):
+def porAciertoIndividual(clave, conjunto, pruebas, entrenamientos):
   aci = 0
   resp = 0
   if (conjunto == "prueba"):
@@ -126,41 +126,40 @@ def porAciertoIndividual(clave, conjunto):
       resp = 100.0*aci/entrenamientos[clave].shape[0]
   return resp
   
-def porAciertoIndividualEntrenamiento(clave):
+def porAciertoIndividualEntrenamiento(clave, entrenamientos):
   aci = 0
   for j in range(0, entrenamientos[clave].shape[0]):
     if prediccion(entrenamientos[clave][j]) == clave:
       aci = aci + 1;
   return 100.0*aci/entrenamientos[clave].shape[0]
 
-suma = 0
-nFotos = 0
-print u"RESUTADOS PRIMER MÉTODO"
-print "\nEntrenamiento = " + str(nEntrenamiento)
-print "Eigenvectores = " + str(no_eigC)
-
-print u"\nImágenes de prueba"
-print "\nClave\tCant. prueba\tPorcentaje acierto"
-for i in range (0, nPersonas):
+def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, claves):
+  suma = 0
+  nFotos = 0
+  print "RESUTADOS PRIMER METODO"
+  print "\nEntrenamiento = " + str(nEntrenamiento)
+  print "Eigenvectores = " + str(no_eigC)
+  print "\nImagenes de prueba"
+  print "\nClave\tCant. prueba\tPorcentaje acierto"
+  for i in range (0, nPersonas):
     pruebai = cuantasFotos(i,claves) - nEntrenamiento
-    aciertoi = porAciertoIndividual(i, "prueba")
+    aciertoi = porAciertoIndividual(i, "prueba", pruebas, entrenamientos)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
-#suma = suma/nFotos
-#print "\nTotal = " + str(suma) + "%"
-
-
-print u"\n\nImágenes de entrenamiento"
-print "\nClave\tCant. prueba\tPorcentaje acierto"
-for i in range (0, nPersonas):
+  #suma = suma/nFotos
+  #print "\nTotal = " + str(suma) + "%"
+  
+  print "\n\nImagenes de entrenamiento"
+  print "\nClave\tCant. prueba\tPorcentaje acierto"
+  for i in range (0, nPersonas):
     pruebai = nEntrenamiento
-    aciertoi = porAciertoIndividual(i, "entrenamiento")
+    aciertoi = porAciertoIndividual(i, "entrenamiento", pruebas, entrenamientos)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
-#suma = suma/nFotos
-#print "\nTotal = " + str(suma) + "%"
+  #suma = suma/nFotos
+  #print "\nTotal = " + str(suma) + "%"
 
 def porAciertoIndividual2(clave, parametro, conjunto):
   aci = 0
