@@ -78,7 +78,7 @@ def minimoImagenes(info=false):
       mi = (claves == i).sum()
       ind = i
   if info:
-    print "La persona que menor número de imágenes tiene es " + nombres[ind] + " con " + str(mi) + " imágenes."
+    print "La persona que menor cantidad de fotos tiene es " + nombres[ind] + " con " + str(mi) + " fotos."
   return mi
 
 def arrToMatrix(arrEntre):
