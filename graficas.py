@@ -22,7 +22,7 @@ def graficaSolucionA(humanos, zombies, muertos, a, b, z):
   plt.legend()
   plt.ylim(0,lim+10)
 
-def interactA()
+def interactA():
   widH = widgets.IntSliderWidget(min=0,max=1000,step=1,value=100)
   widZ = widgets.IntSliderWidget(min=0,max=1000,step=1,value=1)
   wida = widgets.FloatSliderWidget(min=0.01,max=1,step=0.01,value=0.05)
