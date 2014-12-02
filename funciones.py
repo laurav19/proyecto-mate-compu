@@ -133,6 +133,35 @@ def porAciertoIndividualEntrenamiento(clave):
       aci = aci + 1;
   return 100.0*aci/entrenamientos[clave].shape[0]
 
+suma = 0
+nFotos = 0
+print u"RESUTADOS PRIMER MÉTODO"
+print "\nEntrenamiento = " + str(nEntrenamiento)
+print "Eigenvectores = " + str(no_eigC)
+
+print u"\nImágenes de prueba"
+print "\nClave\tCant. prueba\tPorcentaje acierto"
+for i in range (0, nPersonas):
+    pruebai = cuantasFotos(i,claves) - nEntrenamiento
+    aciertoi = porAciertoIndividual(i, "prueba")
+    #suma = suma + aciertoi*pruebai
+    #nFotos = nFotos + pruebai
+    print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+#suma = suma/nFotos
+#print "\nTotal = " + str(suma) + "%"
+
+
+print u"\n\nImágenes de entrenamiento"
+print "\nClave\tCant. prueba\tPorcentaje acierto"
+for i in range (0, nPersonas):
+    pruebai = nEntrenamiento
+    aciertoi = porAciertoIndividual(i, "entrenamiento")
+    #suma = suma + aciertoi*pruebai
+    #nFotos = nFotos + pruebai
+    print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+#suma = suma/nFotos
+#print "\nTotal = " + str(suma) + "%"
+
 def porAciertoIndividual2(clave, parametro, conjunto):
   aci = 0
   desc = 0
