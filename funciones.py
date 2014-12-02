@@ -110,7 +110,7 @@ def norma(vec):
   norma = ((v**2).sum())**0.5
   return norma
 
-def porAciertoIndividual(clave, conjunto, pruebas, entrenamientos):
+def porAciertoIndividual(clave, conjunto, pruebas, entrenamientos, prediccion):
   aci = 0
   resp = 0
   if (conjunto == "prueba"):
@@ -126,14 +126,14 @@ def porAciertoIndividual(clave, conjunto, pruebas, entrenamientos):
       resp = 100.0*aci/entrenamientos[clave].shape[0]
   return resp
   
-def porAciertoIndividualEntrenamiento(clave, entrenamientos):
+def porAciertoIndividualEntrenamiento(clave, entrenamientos, prediccion):
   aci = 0
   for j in range(0, entrenamientos[clave].shape[0]):
     if prediccion(entrenamientos[clave][j]) == clave:
       aci = aci + 1;
   return 100.0*aci/entrenamientos[clave].shape[0]
 
-def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, claves):
+def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, claves, prediccion):
   suma = 0
   nFotos = 0
   print "RESUTADOS PRIMER METODO"
@@ -143,7 +143,7 @@ def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, cla
   print "\nClave\tCant. prueba\tPorcentaje acierto"
   for i in range (0, nPersonas):
     pruebai = cuantasFotos(i,claves) - nEntrenamiento
-    aciertoi = porAciertoIndividual(i, "prueba", pruebas, entrenamientos)
+    aciertoi = porAciertoIndividual(i, "prueba", pruebas, entrenamientos, prediccion)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
@@ -154,7 +154,7 @@ def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, cla
   print "\nClave\tCant. prueba\tPorcentaje acierto"
   for i in range (0, nPersonas):
     pruebai = nEntrenamiento
-    aciertoi = porAciertoIndividual(i, "entrenamiento", pruebas, entrenamientos)
+    aciertoi = porAciertoIndividual(i, "entrenamiento", pruebas, entrenamientos, prediccion)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
