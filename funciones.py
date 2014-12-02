@@ -9,7 +9,7 @@ from sklearn.datasets import fetch_lfw_people
 import urllib
 from StringIO import StringIO
 
-def cuantasFotos(clave):
+def cuantasFotos(clave, claves):
   """
   Regresa el numero de fotos que existen de una persona dada su clave
   """
@@ -46,7 +46,7 @@ def muestraImagen(img, alt, anch, titulo):
   plt.xticks(())
   plt.yticks(())
 
-def matrizAleatoria(m, n):
+def matrizAleatoria(m, n, imagenes1D):
   """
   Regresa una matriz de m x n con imagenes del conjunto imagenes1D elegidas aleatoriamente
   """
@@ -59,7 +59,7 @@ def matrizAleatoria(m, n):
   arr.reshape(m,n)
   return arr, nom
 
-def muestraProm(clave):
+def muestraProm(clave, nombres, altura, ancho):
   """
   Muestra el rostro promedio de la persona con la clave dada
   """
@@ -67,7 +67,7 @@ def muestraProm(clave):
   tlt = "Rostro promedio " + nombres[clave]
   muestraImagen(prom, altura, ancho, tlt)
 
-def minimoImagenes(info=False):
+def minimoImagenes(claves, nombres, nPersonas, info=False):
   """
   Devuelve el menor numero de imagenes que tienen los personajes
   """
