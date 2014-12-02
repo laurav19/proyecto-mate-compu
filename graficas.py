@@ -55,6 +55,16 @@ def solucionB(humanos, infectados, zombies, muertos, a, b, z, r):
   plt.legend()
   plt.ylim(0,lim+10)
 
+def interactB():
+  widH = widgets.IntSliderWidget(min=0,max=1000,step=1,value=100)
+  widZ = widgets.IntSliderWidget(min=0,max=1000,step=1,value=1)
+  widI = widgets.IntSliderWidget(min=0,max=10,step=1,value=0)
+  wida = widgets.FloatSliderWidget(min=0.01,max=1,step=0.01,value=0.05)
+  widb = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.6)
+  widz = widgets.FloatSliderWidget(min=0.01,max=0.5,step=0.01,value=0.2)
+  widr = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.9)
+  interact(solucionB,humanos=widH, infectados=widI, zombies=widZ, muertos=fixed(0), a=wida, b=widb, z=widz, r=widr);
+
 def derivadasC(estado, t, a, b, z, r, k, s, g):
   dh = -b*estado[0]*estado[2]
   di = b*estado[0]*estado[2] - r*estado[1] - k*estado[1]
@@ -79,6 +89,18 @@ def solucionC(humanos, infectados, zombies, muertos, cuarentena, a, b, z, r, k, 
   plt.legend()
   plt.ylim(0,lim+10)
 
+def interactC():
+  widH = widgets.IntSliderWidget(min=0,max=1000,step=1,value=100)
+  widZ = widgets.IntSliderWidget(min=0,max=1000,step=1,value=1)
+  widI = widgets.IntSliderWidget(min=0,max=10,step=1,value=0)
+  wida = widgets.FloatSliderWidget(min=0.01,max=1,step=0.01,value=0.05)
+  widb = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.85)
+  widz = widgets.FloatSliderWidget(min=0.01,max=0.5,step=0.01,value=0.09)
+  widr = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.8)
+  widk = widgets.FloatSliderWidget(min=0.1,max=1,step=0.1,value=0.3)
+  wids = widgets.FloatSliderWidget(min=0.01,max=0.5,step=0.01,value=0.01)
+  widg = widgets.FloatSliderWidget(min=0.1,max=1,step=0.1,value=0.6)
+  interact(solucionC,humanos=widH, infectados=widI, zombies=widZ, muertos=fixed(0), cuarentena=fixed(0), a=wida, b=widb, z=widz, r=widr, k=widk, s=wids, g=widg);
 
 def derivadasD(estado, t, a, b, z, r, c):
   dh = -b*estado[0]*estado[2] + c*estado[1]
@@ -102,6 +124,16 @@ def solucionD(humanos, infectados, zombies, muertos, a, b, z, r, c):
   plt.legend()
   plt.ylim(0,lim+10)
 
+def interactD():
+  widH = widgets.IntSliderWidget(min=0,max=1000,step=1,value=100)
+  widZ = widgets.IntSliderWidget(min=0,max=1000,step=1,value=1)
+  widI = widgets.IntSliderWidget(min=0,max=10,step=1,value=0)
+  wida = widgets.FloatSliderWidget(min=0.01,max=1,step=0.01,value=0.05)
+  widb = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.7)
+  widz = widgets.FloatSliderWidget(min=0.01,max=0.5,step=0.01,value=0.5)
+  widr = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.95)
+  widc = widgets.FloatSliderWidget(min=0,max=0.95,step=0.01,value=0.75)
+  interact(solucionD,humanos=widH, infectados=widI, zombies=widZ, muertos=fixed(0), a=wida, b=widb, z=widz, r=widr, c=widc);
 
 def graficaComparacion():
   fig1, ax = plt.subplots(4,1, figsize=(15,20))
