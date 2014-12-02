@@ -67,7 +67,7 @@ def muestraProm(clave):
   tlt = "Rostro promedio " + nombres[clave]
   muestraImagen(prom, altura, ancho, tlt)
 
-def minimoImagenes(info=false):
+def minimoImagenes(info=False):
   """
   Devuelve el menor numero de imagenes que tienen los personajes
   """
