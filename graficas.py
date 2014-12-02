@@ -22,6 +22,14 @@ def graficaSolucionA(humanos, zombies, muertos, a, b, z):
   plt.legend()
   plt.ylim(0,lim+10)
 
+def interactA()
+  widH = widgets.IntSliderWidget(min=0,max=1000,step=1,value=100)
+  widZ = widgets.IntSliderWidget(min=0,max=1000,step=1,value=1)
+  wida = widgets.FloatSliderWidget(min=0.01,max=1,step=0.01,value=0.05)
+  widb = widgets.FloatSliderWidget(min=0.1,max=1,step=0.05,value=0.3)
+  widz = widgets.FloatSliderWidget(min=0.01,max=0.5,step=0.01,value=0.2)
+  interact(graficaSolucionA,humanos=widH, zombies=widZ, muertos=fixed(0), a=wida, b=(0.1,1,0.05), z=(0.01,0.5,0.01));
+
 def derivadasB(estado, t, a, b, z, r):
   dh = -b*estado[0]*estado[2]
   di = b*estado[0]*estado[2] - r*estado[1]
