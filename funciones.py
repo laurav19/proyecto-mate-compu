@@ -10,13 +10,13 @@ import urllib
 from StringIO import StringIO
 
 def cuantasFotos(clave):
-  """
+  u"""
   Regresa el número de fotos que existen de una persona dada su clave
   """
   return (claves == clave).sum()
 
 def plotMosaico(img, titulos, alt, anch, nFilas, nColumnas, random):
-  """
+  u"""
   Muestra una galería de nFilas x nColumnas con las imágenes contenidas en el arreglo img
   Asigna a cada imagen uno de los títulos contenidos en el arreglo titulos, cada imagen es de alt x anch
   El parámetro random al estar activado selecciona imágenes al azar del arreglo img
@@ -38,7 +38,7 @@ def plotMosaico(img, titulos, alt, anch, nFilas, nColumnas, random):
     plt.yticks(())
 
 def muestraImagen(img, alt, anch, titulo):
-  """
+  u"""
   Muestra la imagen img, con las medidas alt x anch; le asigna el título dado
   """
   plt.imshow(img.reshape((alt, anch)), cmap=plt.cm.gray)
@@ -47,7 +47,7 @@ def muestraImagen(img, alt, anch, titulo):
   plt.yticks(())
 
 def matrizAleatoria(m, n):
-  """
+  u"""
   Regresa una matriz de m x n con imágenes del conjunto imagenes1D elegidas aleatoriamente
   """
   arr = np.array(np.arange(m*n), dtype = object)
@@ -68,7 +68,7 @@ def muestraProm(clave):
   muestraImagen(prom, altura, ancho, tlt)
 
 def minimoImagenes(info=false):
-  """
+  u"""
   Devuelve el menor número de imágenes que tienen los personajes
   """
   mi = (claves == 0).sum()
@@ -82,7 +82,7 @@ def minimoImagenes(info=false):
   return mi
 
 def arrToMatrix(arrEntre):
-  """
+  u"""
   Recibe un arreglo de una dimensión con las imágenes de entrenamiento y lo transforma en una matriz de (no_imag, 2914)
   """
   arr = arrEntre
@@ -96,14 +96,14 @@ def arrToMatrix(arrEntre):
   return np.asmatrix(resp.reshape(s, 62*47))
 
 def indicesMayores(arr, n):
-  """
+  u"""
   Regresa los índices donde se encuentran los n mayores valores de un arreglo
   """
   ind = arr.argsort()[-n:][::-1]
   return ind
 
 def norma(vec):
-  """
+  u"""
   Calcula la norma de un vector o arreglo de una dimensión
   """
   v = np.asarray(vec)
