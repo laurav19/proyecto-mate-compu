@@ -214,7 +214,7 @@ def resultados2(parametro1, pruebas, entrenamientos, nEntrenamiento, no_eigC, nP
   print "Clave\tCant. prueba\tPorcentaje acierto"
   for i in range (0, nPersonas):
     pruebai =  nEntrenamiento
-    aciertoi = porAciertoIndividual2(i, parametro1, "entrenamiento", pruebas, entrenamiento, prediccion2)
+    aciertoi = porAciertoIndividual2(i, parametro1, "entrenamiento", pruebas, entrenamientos, prediccion2)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     if aciertoi != -1:
@@ -234,7 +234,7 @@ def imagenInternet(url):
   img = np.array(img)
   return img
 
-def muestraPrediccion(imagen, nombre, prediccion):
+def muestraPrediccion(imagen, nombre, prediccion, entrenamientos):
   fig, ax = plt.subplots(1,2, figsize=(5,17))
   plt.gray()
   ax[0].imshow(imagen)
