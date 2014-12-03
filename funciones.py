@@ -234,7 +234,7 @@ def imagenInternet(url):
   img = np.array(img)
   return img
 
-def muestraPrediccion(imagen, nombre, prediccion, entrenamientos):
+def muestraPrediccion(imagen, nombre, prediccion, entrenamientos, nombres):
   fig, ax = plt.subplots(1,2, figsize=(5,17))
   plt.gray()
   ax[0].imshow(imagen)
