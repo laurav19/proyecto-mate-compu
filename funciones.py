@@ -161,7 +161,7 @@ def resultados1(pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, cla
   #suma = suma/nFotos
   #print "\nTotal = " + str(suma) + "%"
 
-def porAciertoIndividual2(clave, parametro, conjunto):
+def porAciertoIndividual2(clave, parametro, conjunto, pruebas, entrenamientos, prediccion2):
   aci = 0
   desc = 0
   if (conjunto == "prueba"):
@@ -191,39 +191,38 @@ def porAciertoIndividual2(clave, parametro, conjunto):
         resp = 100.0*aci/(entrenamientos[clave].shape[0] - desc)
   return resp
 
-suma = 0
-nFotos = 0
-print "RESULTADOS SEGUNDO MÉTODO\n"
-print "\nEntrenamiento = " + str(nEntrenamiento)
-print "Eigenvectores = " + str(no_eigC)
-
-print "\nConjunto de prueba\n"
-print "Clave\tCant. prueba\tPorcentaje acierto"
-for i in range (0, nPersonas):
-    pruebai = cuantasFotos(i) - nEntrenamiento
-    aciertoi = porAciertoIndividual2(i, parametro1, "prueba")
+def resultados2(parametro1, pruebas, entrenamientos, nEntrenamiento, no_eigC, nPersonas, claves, prediccion2):
+  suma = 0
+  nFotos = 0
+  print "RESULTADOS SEGUNDO METODO\n"
+  print "\nEntrenamiento = " + str(nEntrenamiento)
+  print "Eigenvectores = " + str(no_eigC)
+  print "\nConjunto de prueba\n"
+  print "Clave\tCant. prueba\tPorcentaje acierto"
+  for i in range (0, nPersonas):
+    pruebai = cuantasFotos(i, claves) - nEntrenamiento
+    aciertoi = porAciertoIndividual2(i, parametro1, "prueba", pruebas, entrenamientos, prediccion2)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     if aciertoi != -1:
-        print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+      print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
     else:
-        print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
-#suma = suma/nFotos
-
-print "\nConjunto de entrenamiento\n"
-print "Clave\tCant. prueba\tPorcentaje acierto"
-for i in range (0, nPersonas):
+      print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
+  #suma = suma/nFotos
+  
+  print "\nConjunto de entrenamiento\n"
+  print "Clave\tCant. prueba\tPorcentaje acierto"
+  for i in range (0, nPersonas):
     pruebai =  nEntrenamiento
-    aciertoi = porAciertoIndividual2(i, parametro2, "entrenamiento")
+    aciertoi = porAciertoIndividual2(i, parametro1, "entrenamiento", pruebas, entrenamiento, prediccion2)
     #suma = suma + aciertoi*pruebai
     #nFotos = nFotos + pruebai
     if aciertoi != -1:
-        print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
+      print str(i) + "\t" + str(pruebai) + "\t\t" + str(aciertoi) + "%"
     else:
-        print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
-#suma = suma/nFotos
-
-#print "\nTotal = " + str(suma) + "%"
+      print str(i) + "\t" + str(pruebai) + "\t\tdesconocido"
+  #suma = suma/nFotos
+  #print "\nTotal = " + str(suma) + "%"
 
 def imagenInternet(url):
   """
@@ -232,16 +231,16 @@ def imagenInternet(url):
   req = urllib.urlopen(url)
   img = Image.open(StringIO(req.read()))
   img = img.convert(mode = 'L')
-  img = array(img)
+  img = np.array(img)
   return img
 
 def muestraPrediccion(imagen, nombre, prediccion):
-    fig, ax = plt.subplots(1,2, figsize=(5,17))
-    plt.gray()
-    ax[0].imshow(imagen)
-    ax[0].set_title(nombre)
-    ax[0].set_axis_off()
+  fig, ax = plt.subplots(1,2, figsize=(5,17))
+  plt.gray()
+  ax[0].imshow(imagen)
+  ax[0].set_title(nombre)
+  ax[0].set_axis_off()
 
-    ax[1].imshow(entrenamientos[prediccion][0])
-    ax[1].set_title(nombres[prediccion])
-    ax[1].set_axis_off()
+  ax[1].imshow(entrenamientos[prediccion][0])
+  ax[1].set_title(nombres[prediccion])
+  ax[1].set_axis_off()
